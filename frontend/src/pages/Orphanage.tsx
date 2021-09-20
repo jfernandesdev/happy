@@ -1,34 +1,17 @@
-import { useHistory } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
-import { FiArrowLeft, FiInfo, FiClock } from 'react-icons/fi';
+import { FiInfo, FiClock } from 'react-icons/fi';
 import { Map, Marker, TileLayer } from 'react-leaflet';
-import L from 'leaflet';
 
-import mapMarkerImg from '../images/map-marker.svg';
+import Sidebar from '../components/Sidebar';
 import '../styles/orphanage.scss';
 
-const happyMapIcon = L.icon({
-  iconUrl: mapMarkerImg,
-  iconSize: [56, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -68]
-})
+import { happyMapIcon } from '../utils/happyMapIcon';
 
 export default function Orphanage() {
-  const { goBack } = useHistory();
-
   return (
     <div id="page-orphanage">
-      <aside className="sidebar">
-        <img src={mapMarkerImg} alt="Happy" />
 
-        <footer>
-          <button type="button" onClick={goBack}>
-            <FiArrowLeft size={24} color="#FFF" />
-          </button>
-        </footer>
-      </aside>
-
+      <Sidebar />
       <main>
         <div className="orphanage-details">
           <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
