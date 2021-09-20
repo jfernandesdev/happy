@@ -55,7 +55,7 @@ export default function OrphanagesMap() {
         </Marker>
       </Map>
 
-      <Link to='#' className="create-orphanage">
+      <Link to='/new-orphanage' className="create-orphanage">
         <FiPlus size={32} color="#FFF" />
       </Link>
     </div>
