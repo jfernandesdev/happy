@@ -5,8 +5,8 @@ Projeto Web desenvolvido durante o NLW#03 com a Rocketseat by Diego Fernandes. T
 
 - [x] Manipulação de mapa;
 - [x] API;
-- [x] Formulário de Cadastro orfanatos;
-- [x] Listagem dos orfanatos nos pontos do mapa (lat,log);
+- [x] Formulário de Cadastro de orfanatos;
+- [x] Listagem dos orfanatos nos pontos do mapa;
 - [x] Página de detalhes do orfanato;
 - [ ] Responsividade mobile (em breve...).
 
@@ -37,7 +37,7 @@ Em breve...
 
 ### Dê uma olhada como o projeto ficou! 👀
 
-Em breve ...
+https://happy-jfernandesdev.netlify.app/
 
 <br>
 
