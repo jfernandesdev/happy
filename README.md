@@ -18,7 +18,7 @@ Projeto Web desenvolvido durante o NLW#03 com a Rocketseat by Diego Fernandes. T
 - ReactJs | 17.0.2
 - Typescript | ^4.1.2
 - Express | ^4.17.1
-- SQlite3 | ^5.0.0
+- MongoDB | ^3.6.2
 
 
 ## Layout (by Tiago Luchtenberg) 🤩
