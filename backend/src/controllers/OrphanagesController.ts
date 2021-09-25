@@ -1,29 +1,36 @@
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getMongoManager } from 'typeorm';
 import * as Yup from 'yup';
+import { ObjectId } from 'mongodb';
 
 import Orphanage from '../models/Orphanage';
 import orphanageView from '../views/orphanages_view';
 
 export default {
   async index(request: Request, response: Response) {
-    const orphanagesRepository = getRepository(Orphanage);
-    const orphanages = await orphanagesRepository.find({
-      relations: ['images']
-    });
+    const orphanagesRepository = getMongoManager();
+
+    const orphanages = await orphanagesRepository.find(Orphanage, {});
 
     return response.json(orphanageView.renderMany(orphanages));
   },
 
   async show(request: Request, response: Response) {
     const { id } = request.params;
-    const orphanagesRepository = getRepository(Orphanage);
-    const orphanage = await orphanagesRepository.findOneOrFail(id, {
-      relations: ['images']
-    });
 
-    return response.json(orphanageView.render(orphanage));
+    try {
+      const orphanagesRepository = getMongoManager();
+      const orphanage = await orphanagesRepository.findOne(Orphanage, {
+        _id: new ObjectId(id),
+      }) as Orphanage
 
+      console.log(orphanage)
+
+      return response.json(orphanageView.render(orphanage));
+    } catch (error) {
+      console.error(error)
+      return response.status(500).json({ error: error.message });
+    }
   },
 
   async create(request: Request, response: Response) {
@@ -37,7 +44,7 @@ export default {
       open_on_weekends
     } = request.body;
 
-    const orphanagesRepository = getRepository(Orphanage);
+    const orphanagesRepository = getMongoManager();
 
     const requestImages = request.files as Express.Multer.File[];
 
@@ -45,7 +52,7 @@ export default {
       return {
         path: image.filename
       }
-    })
+    });
 
     const data = {
       name,
@@ -54,7 +61,7 @@ export default {
       about,
       instructions,
       opening_hours,
-      open_on_weekends: open_on_weekends == 'true',
+      open_on_weekends: open_on_weekends === 'true',
       images
     };
 
@@ -73,13 +80,9 @@ export default {
       ).required().min(1),
     });
 
-    await schema.validate(data, {
-      abortEarly: false
-    });
+    await schema.validate(data, { abortEarly: false });
 
-    const orphanage = orphanagesRepository.create(data);
-
-    await orphanagesRepository.save(orphanage);
+    const orphanage = await orphanagesRepository.save(Orphanage, data);
 
     return response.status(201).json(orphanageView.render(orphanage));
   }

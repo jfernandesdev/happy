@@ -3,8 +3,7 @@ import Image from '../models/Image';
 export default {
   render(image: Image) {
     return {
-      id: image.id,
-      url: `${process.env.REACT_APP_URL_BASE}/uploads/${image.path}`
+      url: `${process.env.API_URL}/uploads/${image.path}`
     }
   },
 
