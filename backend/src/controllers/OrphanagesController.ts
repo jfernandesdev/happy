@@ -29,7 +29,8 @@ export default {
       return response.json(orphanageView.render(orphanage));
     } catch (error) {
       console.error(error)
-      return response.status(500).json({ error: error.message });
+      // return response.status(500).json({ error: error.message });
+      return response.status(500).send('Server connection error');
     }
   },
 
