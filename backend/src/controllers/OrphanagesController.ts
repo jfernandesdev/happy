@@ -24,8 +24,6 @@ export default {
         _id: new ObjectId(id),
       }) as Orphanage
 
-      console.log(orphanage)
-
       return response.json(orphanageView.render(orphanage));
     } catch (error) {
       console.error(error)
@@ -49,9 +47,9 @@ export default {
 
     const requestImages = request.files as Express.Multer.File[];
 
-    const images = requestImages.map(image => {
+    const images = requestImages.map((image: any) => {
       return {
-        path: image.filename
+        path: image.key
       }
     });
 
@@ -74,10 +72,9 @@ export default {
       instructions: Yup.string().required(),
       opening_hours: Yup.string().required(),
       open_on_weekends: Yup.boolean().required(),
-      images: Yup.array(
-        Yup.object().shape({
-          path: Yup.string().required()
-        })
+      images: Yup.array(Yup.object().shape({
+        path: Yup.string().required()
+      })
       ).required().min(1),
     });
 

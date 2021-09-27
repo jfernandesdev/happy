@@ -1,27 +1,63 @@
-import multer, { Options } from 'multer';
+import multer from 'multer';
 import path from 'path';
+import crypto from 'crypto';
+import aws from 'aws-sdk';
+import multerS3 from 'multer-s3';
+import { Request } from 'express';
 
-export default {
+export interface CustomFile extends Express.Multer.File {
+  key: string;
+}
+
+const storageTypes = {
   storage: multer.diskStorage({
     destination: path.join(__dirname, '..', '..', 'uploads'),
-    filename: (request, file, cb) => {
-      const fileName = `${Date.now()}-${file.originalname}`;
-      cb(null, fileName);
-    },
+    filename: (req, file: CustomFile, cb) => {
+      crypto.randomBytes(16, (err, hash) => {
+        if (err) cb(err, file.originalname);
+
+        file.key = `${hash.toString("hex")}-${file.originalname}`;
+        cb(null, file.key);
+      });
+    }
   }),
+  s3: multerS3({
+    s3: new aws.S3(),
+    bucket: process.env.BUCKET_NAME || "",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: "public-read",
+    key: (req, file, cb) => {
+      crypto.randomBytes(16, (err, hash) => {
+        if (err) cb(err);
+
+        const filename = `${hash.toString("hex")}-${file.originalname}`;
+
+        cb(null, filename);
+      });
+    }
+  })
+};
+
+const storage = process.env.NODE_ENV === 'prod' ? storageTypes.s3 : storageTypes.storage;
+
+export default {
+  dest: path.resolve(__dirname, "..", "..", "uploads"),
+  storage: storage,
   limits: {
-    fileSize: 4 * 1024 * 1234 //4MB  
+    fileSize: 2 * 1024 * 1024
   },
-  fileFilter: (request, file, cb) => {
-    const mimeTypes = [
-      'image/jpeg',
-      'image/png'
+  fileFilter: (req: Request, file: CustomFile, cb: any) => {
+    const allowedMimes = [
+      "image/jpeg",
+      "image/pjpeg",
+      "image/png",
+      "image/gif"
     ];
 
-    if (!mimeTypes.includes(file.mimetype)) {
-      return cb(null, false);
+    if (allowedMimes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Invalid file type."));
     }
-
-    cb(null, true);
-  },
-} as Options;
+  }
+};

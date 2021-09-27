@@ -8,7 +8,6 @@ uploads/*
 # misc
 .DS_Store
 .env
-.env.sample
 .env.local
 .env.development.local
 .env.test.local
