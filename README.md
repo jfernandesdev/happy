@@ -33,9 +33,9 @@ Projeto Web desenvolvido durante o NLW#03 com a Rocketseat by Diego Fernandes. T
 
 ### Mobile (screenshot):
 
-       Home       |    Mapa de orfanatos     |   Add. orfanato   |   Detalhes do orf.
+  Home            |   Mapa de orfanatos      |   Add. orfanato   |  Detalhes do orf.
 :----------------:|:-----------------------: |:----------------: |:------------------:
-![](https://github.com/jfernandesdev/happy/blob/245920cef77799b86679caa1ea852cb704057dda/frontend/public/layout/layout-1-mobile.png) | ![](https://github.com/jfernandesdev/happy/blob/245920cef77799b86679caa1ea852cb704057dda/frontend/public/layout/layout-2-mobile.png) | ![](https://github.com/jfernandesdev/happy/blob/245920cef77799b86679caa1ea852cb704057dda/frontend/public/layout/layout-3-mobile.png) | ![](https://github.com/jfernandesdev/happy/blob/245920cef77799b86679caa1ea852cb704057dda/frontend/public/layout/layout-4-mobile.png) 
+![](https://github.com/jfernandesdev/happy/blob/b112d5b2e590e8054c4b093904ff54fa59976af8/frontend/public/layout/layout-1-mobile.png) | ![](https://github.com/jfernandesdev/happy/blob/b112d5b2e590e8054c4b093904ff54fa59976af8/frontend/public/layout/layout-2-mobile.png) | ![](https://github.com/jfernandesdev/happy/blob/b112d5b2e590e8054c4b093904ff54fa59976af8/frontend/public/layout/layout-3-mobile.png) | ![](https://github.com/jfernandesdev/happy/blob/b112d5b2e590e8054c4b093904ff54fa59976af8/frontend/public/layout/layout-4-mobile.png) 
 
 ### Dê uma olhada como o projeto ficou! 👀
 
