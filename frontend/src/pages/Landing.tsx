@@ -9,7 +9,7 @@ export default function Landing() {
   return (
     <div id="page-landing">
       <div className="content-wrapper">
-        <img src={logoHappy} alt="Logo Happy" />
+        <img src={logoHappy} className="logo-happy" alt="Logo Happy" />
 
         <main>
           <h1>Leve felicidade para o mundo</h1>

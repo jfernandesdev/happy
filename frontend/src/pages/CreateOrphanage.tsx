@@ -78,26 +78,32 @@ export default function CreateOrphanage() {
           <fieldset>
             <legend>Dados:</legend>
 
-            <Map
-              center={[-21.2406753, -45.0002598]}
-              style={{ width: '100%', height: 280 }}
-              zoom={14}
-              onClick={handleMapClick}
-            >
-              <TileLayer
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-              />
-              {position.latitude !== 0 && (
-                <Marker
-                  interactive={false}
-                  icon={happyMapIcon}
-                  position={[
-                    position.latitude,
-                    position.longitude
-                  ]}
+            <div className="map-container">
+              <Map
+                center={[-21.2406753, -45.0002598]}
+                style={{ width: '100%', height: 280 }}
+                zoom={14}
+                onClick={handleMapClick}
+              >
+                <TileLayer
+                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
-              )}
-            </Map>
+                {position.latitude !== 0 && (
+                  <Marker
+                    interactive={false}
+                    icon={happyMapIcon}
+                    position={[
+                      position.latitude,
+                      position.longitude
+                    ]}
+                  />
+                )}
+              </Map>
+
+              <footer>
+                <span>Clique no mapa para adicionar a localização</span>
+              </footer>
+            </div>
 
             <div className="input-block">
               <label htmlFor="name">Nome</label>

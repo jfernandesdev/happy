@@ -15,9 +15,26 @@
         overflow: hidden;
 
         .leaflet-container {
-          margin-bottom: 40px;
-          border: 1px solid #d3e2e5;
+          border-bottom: 1px solid #d3e2e5;
           border-radius: 20px;
+        }
+
+        .map-container {
+          background: #E6f7fb;
+          border: 1px solid #b3dae2;
+          border-radius: 20px;
+          margin-bottom: 40px;
+
+          footer {
+            padding: 20px 0;
+            text-align: center;
+
+            span {
+              line-height: 1.5rem;
+              color: #0089a5;
+              text-decoration: none;
+            }
+          }
         }
 
         fieldset {
@@ -167,3 +184,34 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  #page-create-orphanage {
+    display: block;
+
+    main {
+      form {
+        &.create-orphanage-form {
+          width: 95%;
+          padding: 10% 5%;
+
+          .input-block {
+            .images-container {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+
+          fieldset {
+            + fieldset {
+              margin-top: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+ 
+

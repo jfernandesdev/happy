@@ -13,21 +13,21 @@
     justify-content: space-between;
 
     h2 {
-      font-size: 38px;
+      font-size: 2.3rem;
       font-weight: 800;
-      line-height: 42px;
+      line-height: 2.6rem;
       margin-top: 40px;
     }
 
     p {
-      line-height: 28px;
-      margin-top: 24px;
+      line-height: 1.75rem;
+      margin-top: 1.5rem;
     }
 
     footer {
       display: flex;
       flex-direction: column;
-      line-height: 24px;
+      line-height: 1.5rem;
 
       strong {
         font-weight: 800;
@@ -36,9 +36,9 @@
   }
 
   .create-orphanage {
-    position: absolute;
-    right: 40px;
-    bottom: 40px;
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
     width: 64px;
     height: 64px;
     border-radius: 20px;
@@ -67,7 +67,7 @@
 
     .leaflet-popup-content {
       color: #0089a5;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
       margin: 8px 12px;
       display: flex;
@@ -83,6 +83,42 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  #page-map {
+    aside {  
+      header {
+        img {
+          width: 14%;
+        }
+
+        h2 {
+          font-size: 2rem;
+          margin-top: 20px;
+          max-width: 90%;
+        }
+
+        p {
+          margin-top: 10px;
+        }
+      }
+      padding: 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      right: 0;
+      z-index: 99999;
+      max-height: 40vh;
+
+      footer {
+        position: absolute;
+        right: 5%;
+        top: 10%;
       }
     }
   }
