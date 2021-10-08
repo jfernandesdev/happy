@@ -1,7 +1,7 @@
 # Happy <img src='https://github.com/jfernandesdev/happy/blob/245920cef77799b86679caa1ea852cb704057dda/frontend/public/favicon.png' width='27px' />
 Projeto Web desenvolvido durante o NLW#03 com a Rocketseat by Diego Fernandes. TEMA: Happy: "Leve felicidade para o mundo". 👶🏠
 
-### Funcionalidades:
+### Descrição:
 
 - [x] Manipulação de mapa;
 - [x] API;
